@@ -1,24 +1,41 @@
 .drag-area {
     display: inline-flex;
     border: 2px solid grey;
-    width: 30%;
+    width: 90%;
     justify-content: space-between;
+    margin: 50px;
+    height: 100vh;
+}
+
+.widgets-area {
+    width: 50%;
+    border: 2px solid grey;
+    padding: 0 50px;
+}
+
+.selected-widgets-area {
+    width: 50%;
+    border: 2px solid grey;
+    padding: 0 50px;
 }
 
 .drag-group {
     height: 100%;
+    width: 400px;
+    margin: 50px;
 }
 
 .drag-item {
-    width: 20px;
-    padding: 80px;
+    /* width: 250px; */
+    /* padding: 80px; */
     margin: 8px 8px;
-    background: #000;
-    color: #FFF;
-    border: 8px solid grey;
+    /* background: #000; */
+    /* color: #FFF; */
+    border: 2px solid grey;
     border-radius: 5px;
 }
 
-.dragged-group {
-    background: #FFF;
+.dragged-item div {
+    visibility: hidden;
+    border: 2px solid gray;
 }

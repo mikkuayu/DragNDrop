@@ -4,12 +4,12 @@ import {Main} from './components/Main.tsx'
 function App() {
   return (
     <div className="App">
-      <header className='header'>
+      {/* <header className='header'>
         <div style={{fontSize: '20px', paddingTop: '10px'}}>Drag N Drop</div>
         <p style={{marginTop: '0px'}}>Drag items from one list to another</p>
-      </header>
+      </header> */}
       <Main></Main>
-      <footer className='footer'>
+      {/* <footer className='footer'>
         <ul style={{textAlign: 'left', listStyleType: 'none'}}>
           <li style={{color: '#FFF', fontSize: '20px'}}>Heading 1</li>
           <li style={{color: '#FFF'}}>Item 1</li>
@@ -37,7 +37,7 @@ function App() {
           <li style={{color: '#FFF'}}>Item 5</li>
           <li style={{color: '#FFF'}}>Item 6</li>
         </ul>
-      </footer>
+      </footer> */}
     </div>
   );
 }
