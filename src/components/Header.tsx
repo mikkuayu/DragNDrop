@@ -17,7 +17,7 @@ export const Header = ({editable}) => {
                 editable ? 
                 <input style={{fontSize: '20px', paddingTop: '10px'}} value={subtitle} onChange={(event) => setSubtitle(event.target.value)}>
                 </input> : 
-                <div style={{fontSize: '15px', paddingTop: '10px'}}>{subtitle}
+                <div style={{fontSize: '15px', paddingBottom: '5px'}}>{subtitle}
                 </div>
             }
         </div>
