@@ -16,6 +16,7 @@ const availableWidgets = [
 export const DragArea = () => {
     const [selectedWidgets, setSelectedWidgets] = useState([]);
     const [isDragged, setIsDragged] = useState(false);
+    const [editableIndex, setEditableIndex] = useState(-1);
 
     const draggedWidget = useRef();
     const draggedNode = useRef();
@@ -52,9 +53,9 @@ export const DragArea = () => {
     //     return "";
     // }, []);
 
-    const getWidgets = (datatItem) => {
+    const getWidgets = (datatItem, index?) => {
         if (datatItem === widgets.header) {
-            return <Header></Header>
+            return <Header editable={index === editableIndex}></Header>
         } else if (datatItem === widgets.footer) {
             return <Footer></Footer>
         }
@@ -64,6 +65,14 @@ export const DragArea = () => {
         let newList = [...selectedWidgets];
         newList.splice(index, 1);
         setSelectedWidgets(newList);
+    }
+
+    const toggleEditable = (index) => {
+        if(editableIndex >=0 ) {
+            setEditableIndex(-1);
+            return;
+        }
+        setEditableIndex(index);
     }
 
     return (
@@ -78,7 +87,7 @@ export const DragArea = () => {
                         draggable
                         onDragStart={(event) => handleDragStart(event, availableWidget)}
                         onDragEnd={handleDragEnd}>
-                        {getWidgets(availableWidget)}
+                        {getWidgets(availableWidget, -2)}
                     </div>
                 ))}
             </div>
@@ -94,31 +103,16 @@ export const DragArea = () => {
                         // className={getDraggedItemStyle()}
                         >
                             <div style={{display: 'inline-block'}}>
-                            <EditSection removeItem={removeItem} index={selectedWidgetIndex}></EditSection>
-                        {getWidgets(selectedWidget)}
+                            <EditSection removeItem={removeItem} 
+                            index={selectedWidgetIndex}
+                            toggleEditable={toggleEditable}
+                            editable={selectedWidgetIndex === editableIndex}></EditSection>
+                        {getWidgets(selectedWidget, selectedWidgetIndex)}
                                 </div>
                         
                     </div>
                 ))}
             </div>
-            {// list.map((dataGroup, groupIndex) => (
-            //     <div key={dataGroup.group} className="drag-group">
-            //         <div>{dataGroup.group}</div>
-            //         {
-            //             dataGroup.items.map((dataItem, itemIndex) => (
-            //                 <div key={itemIndex} 
-            //                     className={`${getDraggedItemStyle({groupIndex, itemIndex})} "drag-item"`} 
-            //                     draggable 
-            //                     onDragStart={(event) => handleDragStart(event, {groupIndex, itemIndex})}
-            //                     onDragEnter={(event) => handleDragEnter(event, {groupIndex, itemIndex})}
-            //                     onDragEnd={handleDragEnd}>
-            //                         {getWidgets(dataItem)}
-            //                         {/* {dataItem === widgets.header ? <Header></Header> : dataItem} */}
-            //                 </div>
-            //             ))
-            //         }
-            //     </div>
-            // ))
-        }</div>
+        </div>
     );
 }
