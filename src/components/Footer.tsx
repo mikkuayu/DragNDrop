@@ -4,7 +4,7 @@ export const Footer = () => {
     return (
         <footer className='footer'>
             <ul style={{textAlign: 'left', listStyleType: 'none'}}>
-                <li style={{fontSize: '20px'}}>Heading `</li>
+                <li style={{fontSize: '20px'}}>Heading 1</li>
                 <li >Item 1</li>
                 <li >Item 2</li>
             </ul>
